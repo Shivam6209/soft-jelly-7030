@@ -1,6 +1,7 @@
 package com.project.dao;
 
 import com.project.entity.Customer;
+import com.project.entity.ServiceProvider;
 import com.project.exception.NoRecordFoundException;
 import com.project.exception.SomethingWentWrongException;
 import com.project.utility.DBUtil;
@@ -56,6 +57,48 @@ public class ProjectDaoImpl implements ProjectDao {
 			em.close();
 		}
 		return customer;
+	}
+	@Override
+	public void registerServiceProv(ServiceProvider serviceProvider, String query) throws SomethingWentWrongException {
+		EntityManager em = DBUtil.getConnection();
+		EntityTransaction et= em.getTransaction();
+		try {
+			Query query2 = em.createQuery(query);
+			query2.setParameter("reg_email", serviceProvider.getEmail());
+			query2.setParameter("reg_username", serviceProvider.getUsername());
+			try {
+				ServiceProvider serviceProvider1 = (ServiceProvider) query2.getSingleResult();
+				System.out.println(ANSI_RED+"You are Already Registerd "+serviceProvider1.getName()+" Please Login"+ANSI_RESET);
+			} catch (NoResultException e) {
+				et.begin();
+				em.persist(serviceProvider);
+				et.commit();
+			}
+		} catch (Exception e) {
+			et.rollback();
+			throw new SomethingWentWrongException("Unable to Register! Please Try Again");
+		}
+		
+	}
+	@Override
+	public ServiceProvider checkValidServ(String query, String loginUSerName, String loginPass)
+			throws NoRecordFoundException, SomethingWentWrongException {
+		EntityManager em = DBUtil.getConnection();
+		ServiceProvider serviceProvider = null;
+		try {
+			Query query2 = em.createQuery(query);
+			query2.setParameter("login_username", loginUSerName);
+			query2.setParameter("login_password", loginPass);
+			serviceProvider = (ServiceProvider) query2.getSingleResult();
+			if(serviceProvider==null) {
+				throw new NoRecordFoundException("You Are Not Registerd! Please Register First");
+			}
+		} catch (IllegalArgumentException | NoResultException |IllegalStateException e) {
+			throw new SomethingWentWrongException("Unable to Login! Please try again");
+		}finally {
+			em.close();
+		}
+		return serviceProvider;
 	}
 
 }
