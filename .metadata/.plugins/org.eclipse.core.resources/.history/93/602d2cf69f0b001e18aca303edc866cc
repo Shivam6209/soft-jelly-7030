@@ -1,0 +1,10 @@
+package com.project.UIMain;
+
+public class CustomerMain {
+   public static void customerRole() {
+	   boolean isTrue = true;
+	  do {
+		
+	} while (isTrue); 
+   }
+}

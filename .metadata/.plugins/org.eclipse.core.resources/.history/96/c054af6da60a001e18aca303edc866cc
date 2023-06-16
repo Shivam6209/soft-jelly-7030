@@ -1,0 +1,28 @@
+package com.project.UIMain;
+
+import com.project.utility.DBUtil;
+
+import jakarta.persistence.EntityManager;
+
+public class Main {
+	public static final String ANSI_RESET = "\u001B[0m";
+	public static final String ANSI_YELLOW = "\u001B[33m";
+	public static final String ANSI_GREEN = "\u001B[32m";
+	public static final String ANSI_PURPLE = "\u001B[34m";
+	public static final String ANSI_RED = "\u001B[31m";
+
+	public static void main(String[] args) {
+		EntityManager em = DBUtil.getConnection();
+		System.out.println();
+		System.out.println(ANSI_GREEN+"*********WELCOME TO BOOKMYSLOT*********"+ANSI_RESET);
+		
+		System.out.println(ANSI_PURPLE+"Enter:-1 For Login as Customer");
+		System.out.println("Enter:-2 For Login as Service Provider");
+		System.out.println("Enter:-3 For Register as Customer");
+		System.out.println("Enter:-4 For Register as Service Provider"+ANSI_RESET);
+		
+		em.close();
+
+	}
+
+}

@@ -1,0 +1,61 @@
+package com.project.UIMain;
+
+import java.util.Scanner;
+
+import com.project.utility.DBUtil;
+
+import jakarta.persistence.EntityManager;
+
+public class Main {
+	public static final String ANSI_RESET = "\u001B[0m";
+	public static final String ANSI_YELLOW = "\u001B[33m";
+	public static final String ANSI_GREEN = "\u001B[32m";
+	public static final String ANSI_PURPLE = "\u001B[34m";
+	public static final String ANSI_RED = "\u001B[31m";
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		EntityManager em = DBUtil.getConnection();
+		System.out.println();
+		System.out.println(ANSI_GREEN+"*********WELCOME TO BOOKMYSLOT*********"+ANSI_RESET);
+		int choice=0;
+		do {
+			System.out.println(ANSI_PURPLE+"Enter:-1 For Login as Customer");
+			System.out.println("Enter:-2 For Login as Service Provider");
+			System.out.println("Enter:-3 For Register as Customer");
+			System.out.println("Enter:-4 For Register as Service Provider");
+			System.out.println("Enter:-0 For EXIT"+ANSI_RESET);
+			System.out.print(ANSI_YELLOW+"Enter Your Choice:- "+ANSI_RESET);
+			try {
+				choice=sc.nextInt();	
+			} catch (Exception e) {
+				System.out.println(ANSI_RED+"Wrong Input Format"+ANSI_RESET);
+			}
+			switch (choice) {
+			case 1 -> customerLogin(sc);
+			case 2 -> ServiceLogin(sc);
+			case 3 -> customerRegister(sc);
+			case 4 -> ServiceRegister(sc);
+			case 0 -> System.out.println(ANSI_GREEN+"Thanks For Using Our Services"+ANSI_RESET);
+			default -> System.out.println(ANSI_RED+"Invalid Choice "+choice+ANSI_RESET);
+			}
+		} while (choice!=0);
+		
+		em.close();
+
+	}
+	
+	public static void customerLogin(Scanner sc) {
+		
+	}
+	public static void customerRegister(Scanner sc) {
+		
+	}
+	public static void ServiceLogin(Scanner sc) {
+		
+	}
+	public static void ServiceRegister(Scanner sc) {
+		
+	}
+
+}

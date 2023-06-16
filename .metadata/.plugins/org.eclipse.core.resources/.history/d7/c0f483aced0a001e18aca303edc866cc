@@ -1,0 +1,7 @@
+package com.project.dao;
+
+import com.project.entity.Customer;
+
+public interface CheckCustomerDao {
+	public Customer checkValidCus(String query);
+}

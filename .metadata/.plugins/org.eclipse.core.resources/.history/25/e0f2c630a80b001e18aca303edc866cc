@@ -1,0 +1,8 @@
+package com.project.entity;
+
+public class Appointment {
+	private String ap_id;
+	private String title;
+	
+
+}

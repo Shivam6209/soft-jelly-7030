@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="jakarta.persistence.EntityManagerFactory"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.Persistence"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.EntityManager"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="javax.annotation.processing.Generated"/>
+    <fullyQualifiedTypeName name="com.project.service.RegisterCusImpl"/>
+    <fullyQualifiedTypeName name="com.project.service.RegisterCus"/>
+    <fullyQualifiedTypeName name="com.project.dao.RegisterDao"/>
+    <fullyQualifiedTypeName name="com.project.dao.RegisterDaoImpl"/>
+    <fullyQualifiedTypeName name="com.project.service.CheckCustomerImpl"/>
+    <fullyQualifiedTypeName name="com.project.service.CheckCustomer"/>
+    <fullyQualifiedTypeName name="com.project.dao.CheckCustomer"/>
+    <fullyQualifiedTypeName name="com.project.utility.DBUtil"/>
+    <fullyQualifiedTypeName name="com.project.dao.CheckCustomerDao"/>
+    <fullyQualifiedTypeName name="com.project.dao.CheckCustomerDaoImpl"/>
+    <fullyQualifiedTypeName name="com.project.exception.NoRecordFoundException"/>
+    <fullyQualifiedTypeName name="com.project.exception.SomethingWentWrongException"/>
+    <fullyQualifiedTypeName name="java.lang.Exception"/>
+    <fullyQualifiedTypeName name="java.lang.IllegalArgumentException"/>
+    <fullyQualifiedTypeName name="java.lang.IllegalStateException"/>
+    <fullyQualifiedTypeName name="com.project.dao.ProjectDao"/>
+    <fullyQualifiedTypeName name="com.project.dao.ProjectDaoImpl"/>
+    <fullyQualifiedTypeName name="com.project.service.ProjectService"/>
+    <fullyQualifiedTypeName name="com.project.service.ProjectServiceImpl"/>
+    <fullyQualifiedTypeName name="com.project.entity.Customer"/>
+    <fullyQualifiedTypeName name="com.project.exception.DuplicateEmailException"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.NoResultException"/>
+    <fullyQualifiedTypeName name="java.lang.InheritableThreadLocal"/>
+    <fullyQualifiedTypeName name="com.project.UIMain.CustomerMain"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.Id"/>
+    <fullyQualifiedTypeName name="java.lang.Iterable"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="java.util.Set"/>
+    <fullyQualifiedTypeName name="com.project.entity.ServiceSlot"/>
+    <fullyQualifiedTypeName name="java.util.HashSet"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.GeneratedValue"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.ManyToOne"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.OneToMany"/>
+    <fullyQualifiedTypeName name="com.project.entity.ServiceProvider"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.Entity"/>
+    <fullyQualifiedTypeName name="java.util.InputMismatchException"/>
+</qualifiedTypeNameHistroy>

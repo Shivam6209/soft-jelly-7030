@@ -1,0 +1,14 @@
+package com.project.entity;
+
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+
+public class ServiceSlot {
+   @Id
+   private int slot_id;
+   private String slot_time;
+   
+   @ManyToOne
+   private ServiceProvider sP;
+}

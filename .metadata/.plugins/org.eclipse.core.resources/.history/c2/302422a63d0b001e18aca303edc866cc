@@ -1,0 +1,8 @@
+package com.project.service;
+
+import com.project.entity.Customer;
+import com.project.exception.SomethingWentWrongException;
+
+public interface RegisterCus {
+  public void registerCustomer(Customer customer) throws SomethingWentWrongException;
+}

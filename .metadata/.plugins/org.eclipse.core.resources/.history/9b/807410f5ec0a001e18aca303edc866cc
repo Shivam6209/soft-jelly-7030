@@ -1,0 +1,11 @@
+package com.project.service;
+
+public class CheckCustomerImpl implements CheckCustomer {
+
+	@Override
+	public void checkValidCus(String query) {
+		
+		
+	}
+
+}

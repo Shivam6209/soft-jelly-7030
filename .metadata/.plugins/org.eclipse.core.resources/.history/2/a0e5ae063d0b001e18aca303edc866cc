@@ -1,0 +1,27 @@
+package com.project.dao;
+
+import com.project.entity.Customer;
+import com.project.exception.SomethingWentWrongException;
+import com.project.utility.DBUtil;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityTransaction;
+
+public class RegisterDaoImpl implements RegisterDao {
+
+	@Override
+	public void registerCus(Customer customer) throws SomethingWentWrongException {
+		EntityManager em = DBUtil.getConnection();
+		EntityTransaction et= em.getTransaction();
+		try {
+			et.begin();
+			em.persist(customer);
+			et.commit();
+		} catch (Exception e) {
+			et.rollback();
+			throw new SomethingWentWrongException("Unable to Register! Please Try Again");
+		}
+		
+	}
+
+}

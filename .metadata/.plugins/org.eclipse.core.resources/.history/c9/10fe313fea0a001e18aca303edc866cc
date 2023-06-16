@@ -1,0 +1,14 @@
+package com.project.service;
+
+import com.project.entity.Customer;
+import com.project.exception.SomethingWentWrongException;
+
+public class RegisterCusImpl implements RegisterCus{
+
+	@Override
+	public void registerCustomer(Customer customer) throws SomethingWentWrongException {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

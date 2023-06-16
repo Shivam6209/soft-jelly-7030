@@ -1,0 +1,13 @@
+package com.project.dao;
+
+import com.project.entity.Customer;
+
+public class RegisterDaoImpl implements RegisterDao {
+
+	@Override
+	public void RegisterCus(Customer customer) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

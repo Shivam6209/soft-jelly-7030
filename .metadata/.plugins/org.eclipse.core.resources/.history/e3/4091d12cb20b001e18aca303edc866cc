@@ -1,0 +1,16 @@
+package com.project.entity;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
+public class Service {
+	@Id
+	private int s_id;
+	private String s_title;
+	private String s_desc;
+	
+	
+	
+
+}

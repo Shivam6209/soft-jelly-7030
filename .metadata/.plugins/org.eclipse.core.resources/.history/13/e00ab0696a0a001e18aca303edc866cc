@@ -1,0 +1,5 @@
+package com.project.utility;
+
+public class DBUtil {
+
+}

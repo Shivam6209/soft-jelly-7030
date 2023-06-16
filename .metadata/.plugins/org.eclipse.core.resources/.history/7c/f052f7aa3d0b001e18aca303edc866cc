@@ -1,0 +1,13 @@
+package com.project.service;
+
+import com.project.dao.CheckCustomerDao;
+import com.project.dao.CheckCustomerDaoImpl;
+import com.project.entity.Customer;
+import com.project.exception.NoRecordFoundException;
+import com.project.exception.SomethingWentWrongException;
+
+public class CheckCustomerImpl implements CheckCustomer {
+
+	
+
+}

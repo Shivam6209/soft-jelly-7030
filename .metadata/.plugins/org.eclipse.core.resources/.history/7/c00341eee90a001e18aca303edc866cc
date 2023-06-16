@@ -1,0 +1,7 @@
+package com.project.dao;
+
+import com.project.entity.Customer;
+
+public interface RegisterDao {
+	public void RegisterCus(Customer customer);
+}

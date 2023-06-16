@@ -1,0 +1,14 @@
+package com.project.dao;
+
+import com.project.entity.Customer;
+import com.project.exception.NoRecordFoundException;
+
+public class CheckCustomerDaoImpl implements CheckCustomerDao {
+
+	@Override
+	public Customer checkValidCus(String query) throws NoRecordFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

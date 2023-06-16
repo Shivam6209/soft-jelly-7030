@@ -1,0 +1,9 @@
+package com.project.dao;
+
+import com.project.entity.Customer;
+import com.project.exception.NoRecordFoundException;
+import com.project.exception.SomethingWentWrongException;
+
+public interface CheckCustomerDao {
+	public Customer checkValidCus(String query) throws NoRecordFoundException, SomethingWentWrongException;
+}

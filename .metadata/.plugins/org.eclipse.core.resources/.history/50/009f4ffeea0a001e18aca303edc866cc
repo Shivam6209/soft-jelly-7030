@@ -1,0 +1,14 @@
+package com.project.dao;
+
+import com.project.entity.Customer;
+import com.project.exception.SomethingWentWrongException;
+
+public class RegisterDaoImpl implements RegisterDao {
+
+	@Override
+	public void registerCus(Customer customer) throws SomethingWentWrongException {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

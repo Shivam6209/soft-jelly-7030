@@ -1,0 +1,8 @@
+package com.project.dao;
+
+import com.project.entity.Customer;
+import com.project.exception.SomethingWentWrongException;
+
+public interface RegisterDao {
+	public void RegisterCus(Customer customer) throws SomethingWentWrongException;
+}

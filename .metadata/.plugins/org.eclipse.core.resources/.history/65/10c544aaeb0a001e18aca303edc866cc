@@ -1,0 +1,11 @@
+package com.project.service;
+
+import com.project.utility.DBUtil;
+
+import jakarta.persistence.EntityManager;
+
+public interface CheckCustomer {
+	
+   public void checkValidCus(String query);
+	
+}

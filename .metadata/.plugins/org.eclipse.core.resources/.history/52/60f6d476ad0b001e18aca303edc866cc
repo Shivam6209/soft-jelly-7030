@@ -1,0 +1,8 @@
+package com.project.entity;
+
+public class Service {
+	private String ap_id;
+	private String title;
+	
+
+}

@@ -1,0 +1,10 @@
+package com.project.service;
+
+import com.project.entity.Customer;
+import com.project.exception.NoRecordFoundException;
+
+public interface CheckCustomer {
+	
+   public Customer checkValidCus(String query) throws NoRecordFoundException;
+	
+}

@@ -1,0 +1,20 @@
+package com.project.service;
+
+import com.project.entity.Customer;
+import com.project.exception.NoRecordFoundException;
+import com.project.exception.SomethingWentWrongException;
+
+public class ProjectServiceImpl implements ProjectService {
+	@Override
+	public void registerCustomer(Customer customer) throws SomethingWentWrongException {
+//		RegisterDao registerDao =  new RegisterDaoImpl();
+//		registerDao.registerCus(customer);
+		
+	}
+	@Override
+	public Customer checkValidCus(String query, String loginEmail, String loginPass) throws NoRecordFoundException, SomethingWentWrongException {
+//		CheckCustomerDao checkCustomerDao = new CheckCustomerDaoImpl();
+//		return checkCustomerDao.checkValidCus(query, loginEmail, loginPass);
+		return null;
+	}
+}

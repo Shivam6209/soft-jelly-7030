@@ -1,0 +1,31 @@
+package com.project.dao;
+
+import com.project.entity.Customer;
+import com.project.exception.NoRecordFoundException;
+import com.project.exception.SomethingWentWrongException;
+import com.project.utility.DBUtil;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.Query;
+
+public class CheckCustomerDaoImpl implements CheckCustomerDao {
+
+	@Override
+	public Customer checkValidCus(String query, String loginEmail, String loginPass) throws NoRecordFoundException,SomethingWentWrongException {
+		EntityManager em = DBUtil.getConnection();
+		Customer customer = null;
+		try {
+			Query query2 = em.createQuery(query);
+			query2.setParameter("email", loginEmail);
+			query2.setParameter("pass", loginPass);
+			customer = (Customer) query2.getSingleResult();
+			if(customer==null) {
+				throw new NoRecordFoundException("You Are Not Registerd!");
+			}
+		} catch (NoRecordFoundException e) {
+			throw new SomethingWentWrongException("Unable To Login! Please Try Again");
+		}
+		return customer;
+	}
+
+}

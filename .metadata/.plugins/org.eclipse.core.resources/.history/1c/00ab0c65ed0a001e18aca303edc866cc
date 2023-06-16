@@ -1,0 +1,13 @@
+package com.project.dao;
+
+import com.project.entity.Customer;
+
+public class CheckCustomerImpl implements CheckCustomerDao {
+
+	@Override
+	public Customer checkValidCus(String query) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

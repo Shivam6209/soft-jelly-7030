@@ -1,0 +1,15 @@
+package com.project.UIMain;
+
+import com.project.utility.DBUtil;
+
+import jakarta.persistence.EntityManager;
+
+public class Main {
+
+	public static void main(String[] args) {
+		EntityManager em = DBUtil.getConnection();
+		
+
+	}
+
+}
