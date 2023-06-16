@@ -919,3 +919,4 @@ java.net.URISyntaxException: Illegal character in path at index 13: file:/C:/Jav
 2023-06-16 09:47:29,135 [Stop Help Server] INFO  org.eclipse.jetty.server.Server - Stopped Server@4812f299{STOPPING}[10.0.6,sto=0]
 2023-06-16 09:47:29,194 [Stop Help Server] INFO  o.e.jetty.server.AbstractConnector - Stopped ServerConnector@4c5622b4{HTTP/1.1, (http/1.1)}{127.0.0.1:0}
 2023-06-16 09:47:29,604 [Stop Help Server] INFO  o.e.j.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@3897a8c1{/help,null,STOPPED}
+2023-06-16 09:48:22,047 [Worker-2: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
