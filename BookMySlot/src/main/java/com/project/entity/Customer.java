@@ -1,9 +1,15 @@
 package com.project.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Customer {
@@ -13,6 +19,9 @@ public class Customer {
 	private String name;
 	private String email;
 	private String password;
+	
+	@OneToMany(mappedBy = "customer",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	List<Appoinment> appoinments = new ArrayList<>() ;
 	
 	public Customer() {
 		super();
@@ -44,6 +53,14 @@ public class Customer {
 	}
 	public int getCustomer_id() {
 		return customer_id;
+	}
+	
+	
+	public List<Appoinment> getAppoinments() {
+		return appoinments;
+	}
+	public void setAppoinments(List<Appoinment> appoinments) {
+		this.appoinments = appoinments;
 	}
 	@Override
 	public String toString() {

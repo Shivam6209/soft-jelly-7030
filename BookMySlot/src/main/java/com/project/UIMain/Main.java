@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import com.project.entity.Customer;
 import com.project.entity.ServiceProvider;
+import com.project.exception.NoRecordFoundException;
 import com.project.exception.SomethingWentWrongException;
 import com.project.service.ProjectService;
 import com.project.service.ProjectServiceImpl;
@@ -69,11 +70,14 @@ public class Main {
 			String query = "SELECT c FROM Customer c WHERE email=:login_email AND password=:login_password";
 			ProjectService projectService = new ProjectServiceImpl();
 			Customer customer = projectService.checkValidCus(query, loginEmail, loginPass);
+			if(customer==null) {
+			throw new NoRecordFoundException("");
+			}
 			System.out.println();
 			System.out.println(
 					ANSI_RESET + ANSI_BLUE + "Welcome " + customer.getName() + " Happy to see u again" + ANSI_RESET);
 			System.out.println();
-			CustomerMain.customerRole(sc);
+			CustomerMain.customerRole(sc,customer);
 		} catch (Exception e) {
 			System.out.println(ANSI_RED + e.getMessage() + ANSI_RESET);
 		}
@@ -121,11 +125,14 @@ public class Main {
 			String query = "SELECT s FROM ServiceProvider s WHERE username=:login_username AND password=:login_password";
 			ProjectService projectService = new ProjectServiceImpl();
 			ServiceProvider serviceProvider = projectService.checkValidServ(query, loginUsername, loginPass);
+			if(serviceProvider==null) {
+				throw new NoRecordFoundException("");
+			}
 			System.out.println();
 			System.out.println(ANSI_RESET + ANSI_BLUE + "Welcome " + serviceProvider.getName() + " Happy to see u again"
 					+ ANSI_RESET);
 			System.out.println();
-			CustomerMain.customerRole(sc);
+			ServiceProviderMain.ServiceProviderRole(sc,serviceProvider);
 		} catch (Exception e) {
 			System.out.println(ANSI_RED + e.getMessage() + ANSI_RESET);
 		}
@@ -139,6 +146,7 @@ public class Main {
 		String regUsername;
 		String regPass;
 		try {
+			sc.nextLine();
 			System.out.println(ANSI_GREEN + "Enter Your Full Name");
 			regName = sc.nextLine();
 			System.out.println("Enter Your Email");

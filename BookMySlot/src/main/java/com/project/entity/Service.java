@@ -5,25 +5,24 @@ import java.util.Set;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 
 @Entity
 public class Service {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int s_id;
 	private String s_title;
 	private String s_desc;
-	
-	@ManyToOne
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "service_provider_username")
 	private ServiceProvider sp;
-	
-	@OneToMany(mappedBy = "ss",cascade = CascadeType.ALL)
-	private Set<ServiceSlot> serviceSlots  = new HashSet<>();
+
+	@OneToMany(mappedBy = "ss", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private Set<ServiceSlot> serviceSlots = new HashSet<>();
 
 	public Service() {
 		super();
@@ -60,19 +59,17 @@ public class Service {
 		this.sp = sp;
 	}
 
-	public int getS_id() {
-		return s_id;
+	public Set<ServiceSlot> getServiceSlots() {
+		return serviceSlots;
+	}
+
+	public void setServiceSlots(Set<ServiceSlot> serviceSlots) {
+		this.serviceSlots = serviceSlots;
 	}
 
 	@Override
 	public String toString() {
-		return "Service [s_id=" + s_id + ", s_title=" + s_title + ", s_desc=" + s_desc + ", sp=" + sp + "]";
+		return "Service [s_title=" + s_title + ", s_desc=" + s_desc + "\n slots= " + serviceSlots + "]";
 	}
-	
-	
-	
-	
-	
-	
 
 }

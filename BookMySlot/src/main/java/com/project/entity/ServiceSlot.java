@@ -1,5 +1,6 @@
 package com.project.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
@@ -7,8 +8,9 @@ import jakarta.persistence.ManyToOne;
 @Entity
 public class ServiceSlot {
    @Id
-   private int slot_id;
    private String slot_time;
+   @Column(columnDefinition = "VARCHAR(10) DEFAULT 'yes'",name = "Available")
+   private String isAvailabe = "yes";
    
    @ManyToOne
    private Service ss;
@@ -39,14 +41,20 @@ public void setSs(Service ss) {
 	this.ss = ss;
 }
 
-public int getSlot_id() {
-	return slot_id;
+public String getIsAvailabe() {
+	return isAvailabe;
+}
+
+public void setIsAvailabe(String isAvailabe) {
+	this.isAvailabe = isAvailabe;
 }
 
 @Override
 public String toString() {
-	return "ServiceSlot [slot_id=" + slot_id + ", slot_time=" + slot_time + ", ss=" + ss + "]";
+	return "ServiceSlot [slot_time=" + slot_time + ", Availabe=" + isAvailabe + "]";
 }
+
+
 
 
    

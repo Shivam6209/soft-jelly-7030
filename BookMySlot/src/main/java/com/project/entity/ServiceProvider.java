@@ -1,10 +1,13 @@
 package com.project.entity;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
@@ -16,8 +19,11 @@ public class ServiceProvider {
 	private String email;
 	private String password;
 
-	@OneToMany(mappedBy = "sp",cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "sp",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	private Set<Service> services  = new HashSet<>();
+	
+	@OneToMany(mappedBy = "serviceProvider",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	List<Appoinment> appoinments= new ArrayList<>();
 
 	public ServiceProvider() {
 		super();
@@ -70,11 +76,18 @@ public class ServiceProvider {
 	public void setServices(Set<Service> services) {
 		this.services = services;
 	}
+	
+	public List<Appoinment> getAppoinments() {
+		return appoinments;
+	}
+
+	public void setAppoinments(List<Appoinment> appoinments) {
+		this.appoinments = appoinments;
+	}
 
 	@Override
 	public String toString() {
-		return "ServiceProvider [username=" + username + ", name=" + name + ", email=" + email + ", password="
-				+ password + ", services=" + services + "]";
+		return "ServiceProvider [username="+ username +", name=" + name + ", email=" + email + " \n, services=" + services + "]";
 	}
 
 	

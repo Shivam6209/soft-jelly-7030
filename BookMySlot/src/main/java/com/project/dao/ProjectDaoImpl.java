@@ -1,7 +1,14 @@
 package com.project.dao;
 
+import java.util.List;
+
+import javax.swing.border.EtchedBorder;
+
+import com.project.entity.Appoinment;
 import com.project.entity.Customer;
+import com.project.entity.Service;
 import com.project.entity.ServiceProvider;
+import com.project.entity.ServiceSlot;
 import com.project.exception.NoRecordFoundException;
 import com.project.exception.SomethingWentWrongException;
 import com.project.utility.DBUtil;
@@ -36,6 +43,8 @@ public class ProjectDaoImpl implements ProjectDao {
 		} catch (Exception e) {
 			et.rollback();
 			throw new SomethingWentWrongException("Unable to Register! Please Try Again");
+		}finally {
+			em.close();
 		}
 		
 	}
@@ -48,12 +57,11 @@ public class ProjectDaoImpl implements ProjectDao {
 			query2.setParameter("login_email", loginEmail);
 			query2.setParameter("login_password", loginPass);
 			customer = (Customer) query2.getSingleResult();
-			if(customer==null) {
-				throw new NoRecordFoundException("You Are Not Registerd!");
-			}
-		} catch (IllegalArgumentException | NoResultException |IllegalStateException e) {
+		} catch (IllegalArgumentException |IllegalStateException e) {
 			throw new SomethingWentWrongException("Unable to Login! Please try again");
-		}finally {
+		}catch (NoResultException e) {
+			System.out.println(ANSI_RED+"You Are Not Registerd! Please Register First"+ANSI_RESET);
+			}finally {
 			em.close();
 		}
 		return customer;
@@ -77,6 +85,8 @@ public class ProjectDaoImpl implements ProjectDao {
 		} catch (Exception e) {
 			et.rollback();
 			throw new SomethingWentWrongException("Unable to Register! Please Try Again");
+		}finally {
+			em.close();
 		}
 		
 	}
@@ -90,15 +100,71 @@ public class ProjectDaoImpl implements ProjectDao {
 			query2.setParameter("login_username", loginUSerName);
 			query2.setParameter("login_password", loginPass);
 			serviceProvider = (ServiceProvider) query2.getSingleResult();
-			if(serviceProvider==null) {
-				throw new NoRecordFoundException("You Are Not Registerd! Please Register First");
-			}
-		} catch (IllegalArgumentException | NoResultException |IllegalStateException e) {
+		} catch (IllegalArgumentException |IllegalStateException e) {
 			throw new SomethingWentWrongException("Unable to Login! Please try again");
-		}finally {
+		}catch (NoResultException e) {
+		System.out.println(ANSI_RED+"You Are Not Registerd! Please Register First"+ANSI_RESET);
+		}
+		finally {
 			em.close();
 		}
 		return serviceProvider;
+	}
+	@Override
+	public List<ServiceProvider> viewServiceProviders(String query) throws SomethingWentWrongException {
+		List<ServiceProvider> serviceProviders = null;
+		EntityManager em = null;
+		try {
+			em=DBUtil.getConnection();
+			Query createQuery = em.createQuery(query);
+			serviceProviders = (List<ServiceProvider>)createQuery.getResultList();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			throw new SomethingWentWrongException("Unable to view Service Providers Details");
+		}finally {
+			em.close();
+		}
+		return serviceProviders;
+	}
+	@Override
+	public void addService(Service service) throws SomethingWentWrongException {
+		EntityManager em = DBUtil.getConnection();
+		EntityTransaction et = em.getTransaction();
+		try {
+			et.begin();
+			em.persist(service);
+			et.commit();
+		} catch (Exception e) {
+			throw new SomethingWentWrongException("Unable To add Service");
+		}finally {
+			em.close();
+		}
+	}
+	@Override
+	public void bookAppoinment(ServiceSlot validSlot, ServiceProvider serviceProvider) throws SomethingWentWrongException {
+	    EntityManager em = null;
+	    EntityTransaction et = null;
+	    try {
+	        em = DBUtil.getConnection();
+	        et = em.getTransaction();
+	        et.begin();
+	        validSlot.setIsAvailabe("no");
+	        em.merge(serviceProvider);
+	        em.merge(validSlot);
+	        et.commit();
+	        
+	    } catch (Exception e) {
+	        if (et != null) {
+	            et.rollback();
+	        }
+	    	e.printStackTrace();
+	        System.out.println(e);
+	        throw new SomethingWentWrongException("Unable to Book Appointment");
+	    } finally {
+	        if (em != null) {
+	            em.close();
+	        }
+	    }
 	}
 
 }
