@@ -6,6 +6,7 @@ import java.util.Scanner;
 import java.util.Set;
 
 import com.project.entity.Appoinment;
+import com.project.entity.Customer;
 import com.project.entity.Service;
 import com.project.entity.ServiceProvider;
 import com.project.entity.ServiceSlot;
@@ -31,6 +32,7 @@ public class ServiceProviderMain {
 			System.out.println("Enter:-2 For View Appoinment Details");
 			System.out.println("Enter:-3 For Give Service to Booked Appoinment");
 			System.out.println("Enter:-4 For Open More Slots in Existing Service");
+			System.out.println("Enter:-5 For Search the appointment by id");
 			System.out.println("Enter:-0 For Logout" + ANSI_RESET);
 			System.out.print(ANSI_YELLOW + "Enter Your Choice:- " + ANSI_RESET);
 			try {
@@ -44,6 +46,7 @@ public class ServiceProviderMain {
 			case 2 -> viewAppoi(sc, serviceProvider);
 			case 3 -> giveService(sc, serviceProvider);
 			case 4 -> openSlot(sc, serviceProvider);
+			case 5 -> searchAppoi(sc);
 			case 0 -> {
 				isTrue = false;
 				System.out.println();
@@ -85,7 +88,17 @@ public class ServiceProviderMain {
 			System.out.println(ANSI_RED+e.getMessage()+ANSI_RESET);
 		}
 	}
-
+	public static void searchAppoi(Scanner sc) {
+		System.out.print("Enter Appoinment id which you want to search:- ");
+		int id = sc.nextInt();
+		ProjectService ps = new ProjectServiceImpl();
+		try {
+			Appoinment appoinment = ps.findAppoinment(id);
+			System.out.println(appoinment);
+		} catch (NoRecordFoundException e) {
+			System.out.println(e.getMessage());
+		}
+	}
 	public static void giveService(Scanner sc, ServiceProvider sp) {
 		viewAppoi(sc, sp);
 		System.out.print(ANSI_BLUE + "Enter Appoinment id from above in which you want to give Service:- ");

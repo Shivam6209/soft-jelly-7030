@@ -33,6 +33,8 @@ public class CustomerMain {
 			System.out.println("Enter:-2 For Book the appointment");
 			System.out.println("Enter:-3 For View all appointment");
 			System.out.println("Enter:-4 For Cancel the appointment");
+			System.out.println("Enter:-5 For Search the appointment by id");
+			System.out.println("Enter:-6 For Search service provider by username");
 			System.out.println("Enter:-0 For Logout" + ANSI_RESET);
 			System.out.print(ANSI_YELLOW + "Enter Your Choice:- " + ANSI_RESET);
 			try {
@@ -46,6 +48,8 @@ public class CustomerMain {
 			case 2 -> bookAppoi(sc, customer);
 			case 3 -> viewAppoi(sc, customer);
 			case 4 -> cancelAppoi(sc, customer);
+			case 5 -> searchAppoi(sc, customer);
+			case 6 -> searchsp(sc);
 			case 0 -> {
 				isTrue = false;
 				System.out.println();
@@ -55,6 +59,30 @@ public class CustomerMain {
 			default -> System.out.println(ANSI_RED + "Invalid Choice! Please Choose Above Choice Only" + ANSI_RESET);
 			}
 		} while (isTrue);
+	}
+
+	public static void searchsp(Scanner sc) {
+		System.out.print("Enter Service Provider username which you want to search:- ");
+		String username = sc.next();
+		ProjectService ps = new ProjectServiceImpl();
+		try {
+			ServiceProvider sp = ps.findServiceProvider(username);
+			System.out.println(sp);
+		}  catch (NoRecordFoundException e) {
+			System.out.println(e.getMessage());
+		}	
+	}
+
+	public static void searchAppoi(Scanner sc, Customer customer) {
+		System.out.print("Enter Appoinment id which you want to search:- ");
+		int id = sc.nextInt();
+		ProjectService ps = new ProjectServiceImpl();
+		try {
+			Appoinment appoinment = ps.findAppoinment(id);
+			System.out.println(appoinment);
+		} catch (NoRecordFoundException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 
 	public static void viewAppoi(Scanner sc, Customer customer) {

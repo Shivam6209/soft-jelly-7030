@@ -30,4 +30,4 @@ public interface ProjectService {
    public void giveService(Appoinment ap,String status)throws SomethingWentWrongException;
    public List<Service> viewServices(ServiceProvider serviceProvider) throws SomethingWentWrongException;
    public void addServiceSlot(Service service) throws SomethingWentWrongException;
-}
+ }
