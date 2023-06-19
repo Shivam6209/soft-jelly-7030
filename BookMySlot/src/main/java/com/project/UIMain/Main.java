@@ -25,8 +25,10 @@ public class Main {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		EntityManager em = DBUtil.getConnection();
-		System.out.println();
+		System.out.println("\n");
+		System.out.println(ANSI_RED+"########################################################################"+ANSI_RESET);
 		System.out.println(ANSI_GREEN + "*********WELCOME TO BOOKMYSLOT*********" + ANSI_RESET);
+		System.out.println(ANSI_RED+"########################################################################"+ANSI_RESET);
 		int choice = 0;
 		do {
 			try {
@@ -74,9 +76,11 @@ public class Main {
 			throw new NoRecordFoundException("");
 			}
 			System.out.println();
+			System.out.println(ANSI_GREEN+"**********************************************************************"+ANSI_RESET);
 			System.out.println(
 					ANSI_RESET + ANSI_BLUE + "Welcome " + customer.getName() + " Happy to see u again" + ANSI_RESET);
-			System.out.println();
+			System.out.println(ANSI_GREEN+"************************************************************************"+ANSI_RESET);
+			
 			CustomerMain.customerRole(sc,customer);
 		} catch (Exception e) {
 			System.out.println(ANSI_RED + e.getMessage() + ANSI_RESET);
@@ -103,7 +107,7 @@ public class Main {
 			ProjectService projectService = new ProjectServiceImpl();
 			projectService.registerCustomer(customer, query);
 			System.out.println();
-			System.out.println(ANSI_BLUE + "***Welcome To BOOKMYSLOT*** ThankYou For Registration" + ANSI_RESET);
+			System.out.println(ANSI_BLUE + "***Welcome To BOOKMYSLOT*** ThankYou For Registration "+customer.getName() + ANSI_RESET);
 			System.out.println();
 		} catch (SomethingWentWrongException e) {
 			System.out.println(ANSI_RED + e.getMessage() + ANSI_RESET);
@@ -129,9 +133,11 @@ public class Main {
 				throw new NoRecordFoundException("");
 			}
 			System.out.println();
-			System.out.println(ANSI_RESET + ANSI_BLUE + "Welcome " + serviceProvider.getName() + " Happy to see u again"
+			System.out.println(ANSI_GREEN+"**********************************************************************"+ANSI_RESET);
+			System.out.println(ANSI_RESET + ANSI_BLUE + "Welcome " + serviceProvider.getName() + " Happy to see u again!"
 					+ ANSI_RESET);
-			System.out.println();
+			System.out.println(ANSI_GREEN+"************************************************************************"+ANSI_RESET);
+			
 			ServiceProviderMain.ServiceProviderRole(sc,serviceProvider);
 		} catch (Exception e) {
 			System.out.println(ANSI_RED + e.getMessage() + ANSI_RESET);
@@ -160,7 +166,7 @@ public class Main {
 			ProjectService projectService = new ProjectServiceImpl();
 			projectService.registerServiceProv(serviceProvider, query);
 			System.out.println();
-			System.out.println(ANSI_BLUE + "***Welcome To BOOKMYSLOT*** ThankYou For Registration" + ANSI_RESET);
+			System.out.println(ANSI_BLUE + "***Welcome To BOOKMYSLOT*** ThankYou For Registration "+serviceProvider.getName() + ANSI_RESET);
 			System.out.println();
 		} catch (SomethingWentWrongException e) {
 			System.out.println(ANSI_RED + e.getMessage() + ANSI_RESET);

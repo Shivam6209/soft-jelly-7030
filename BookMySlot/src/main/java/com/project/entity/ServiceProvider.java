@@ -87,7 +87,7 @@ public class ServiceProvider {
 
 	@Override
 	public String toString() {
-		return "ServiceProvider [username="+ username +", name=" + name + ", email=" + email + " \n, services=" + services + "]";
+		return "ServiceProvider [username="+ username +", name=" + name + ", email=" + email + "] \n" +services;
 	}
 
 	

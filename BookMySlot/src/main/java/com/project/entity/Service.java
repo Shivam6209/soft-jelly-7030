@@ -69,7 +69,7 @@ public class Service {
 
 	@Override
 	public String toString() {
-		return "Service [s_title=" + s_title + ", s_desc=" + s_desc + "\n slots= " + serviceSlots + "]";
+		return "Service [Title=" + s_title + ", Description=" + s_desc + "]\n" + serviceSlots + "\n";
 	}
 
 }

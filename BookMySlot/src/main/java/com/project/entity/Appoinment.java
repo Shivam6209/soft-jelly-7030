@@ -1,5 +1,8 @@
 package com.project.entity;
 
+import java.time.LocalDateTime;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,19 +19,21 @@ public class Appoinment {
 	private String customerName;
 	private String serviceName;
 	private String slot;
+	private int slotID;
 	private String status;
+	private LocalDateTime booked_at;
+	private LocalDateTime response_at;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.DETACH)
 	@JoinColumn(name = "customer_id")
 	private Customer customer;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.DETACH)
 	@JoinColumn(name = "serviceproviderUsername")
 	private ServiceProvider serviceProvider;
 
 	public Appoinment() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public String getCustomerName() {
@@ -49,6 +54,18 @@ public class Appoinment {
 
 	public String getSlot() {
 		return slot;
+	}
+
+	public int getSlotID() {
+		return slotID;
+	}
+
+	public void setSlotID(int slotID) {
+		this.slotID = slotID;
+	}
+
+	public int getAppoinmentId() {
+		return appoinmentId;
 	}
 
 	public void setSlot(String slot) {
@@ -84,10 +101,26 @@ public class Appoinment {
 		this.serviceProvider = serviceProvider;
 	}
 
+	public LocalDateTime getBooked_at() {
+		return booked_at;
+	}
+
+	public void setBooked_at(LocalDateTime booked_at) {
+		this.booked_at = booked_at;
+	}
+
+	public LocalDateTime getResponse_at() {
+		return response_at;
+	}
+
+	public void setResponse_at(LocalDateTime response_at) {
+		this.response_at = response_at;
+	}
+
 	@Override
 	public String toString() {
-		return "Appoinment [appoinment_id=" + appoinmentId + ", customerName=" + customerName + ", serviceName="
-				+ serviceName + ", slot=" + slot + ", status=" + status + "]";
+		return "Appoinment [appoinment_id=" + appoinmentId + ", serviceName="
+				+ serviceName + ", slot=" + slot + ", slotId=" + slotID + ", status=" + status;
 	}
 
 }
