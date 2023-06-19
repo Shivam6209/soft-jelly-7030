@@ -24,13 +24,6 @@ public class ServiceProviderMain {
 
 	public static void ServiceProviderRole(Scanner sc, ServiceProvider serviceProvider) {
 
-		/*
-		 * Set up availability, define working hours, and specify service descriptions.
-		 * View appointment details, including customer information and appointment
-		 * time. Open available slots for customers to book appointments. Log out from
-		 * the service provider account.
-		 * 
-		 */
 		boolean isTrue = true;
 		int choice = 0;
 		do {
@@ -133,7 +126,7 @@ public class ServiceProviderMain {
 			int slot = sc.nextInt();
 			Set<ServiceSlot> serviceSlots = new HashSet<>();
 			for (int i = 0; i < slot; i++) {
-				System.out.println("Enter Slot " + (i + 1) + " time(hh-mm)");
+				System.out.println("Enter Slot " + (i + 1) + " time(hh->hh)");
 				String slotName = sc.next();
 				ServiceSlot serviceSlot = new ServiceSlot(slotName);
 				serviceSlot.setSs(service);

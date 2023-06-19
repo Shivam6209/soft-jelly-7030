@@ -19,7 +19,6 @@ Book My Slot is a console-based appointment scheduling system designed to stream
 - Select a suitable appointment slot based on service provider availability.
 - Book the appointment without waiting for confirmation.
 - Cancel the appointment.
-- Provide feedback and ratings for service providers and the overall appointment experience.
 - Log out from the customer account.
 
 ### For Service Providers:

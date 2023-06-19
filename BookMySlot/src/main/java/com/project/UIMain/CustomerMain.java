@@ -1,6 +1,5 @@
 package com.project.UIMain;
 
-import java.security.PublicKey;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Scanner;
@@ -34,7 +33,6 @@ public class CustomerMain {
 			System.out.println("Enter:-2 For Book the appointment");
 			System.out.println("Enter:-3 For View all appointment");
 			System.out.println("Enter:-4 For Cancel the appointment");
-			System.out.println("Enter:-5 To give Feedback to serviceProvider");
 			System.out.println("Enter:-0 For Logout" + ANSI_RESET);
 			System.out.print(ANSI_YELLOW + "Enter Your Choice:- " + ANSI_RESET);
 			try {
