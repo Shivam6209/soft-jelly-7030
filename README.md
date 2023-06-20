@@ -31,6 +31,9 @@ Book My Slot is a console-based appointment scheduling system designed to stream
 - Open available slots for customers to book appointments.
 - Search Appoinment by appoinment id.
 - Log out from the service provider account.
+  
+## ER Diagram
+![logo](https://github.com/Shivam6209/soft-jelly-7030/assets/121329077/d5df0b13-2a44-4ba3-99bd-da95ebd10720)
 
 ## Technologies Used
 - The Book My Slot project utilizes the following technologies and frameworks:
